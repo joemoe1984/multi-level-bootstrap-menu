@@ -5,4 +5,6 @@ a standalone solution.
 For details visit <a href="http://jeffmould.com/" title="multi level dropdown
  menu for Bootstrap">http://www.jeffmould.com/2014/01/09/responsive-multi-level-bootstrap-menu/</a>
 
+## Fixed Bugs
 
+- Fixed issue where sub menus could not open child menus. 
