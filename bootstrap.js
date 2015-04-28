@@ -727,7 +727,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
       isActive = $parent.hasClass('open')
 
-      clearMenus()
+      clearMenus(e)
 
       if (!isActive) {
         if ('ontouchstart' in document.documentElement) {
@@ -785,11 +785,23 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
   }
 
-  function clearMenus() {
-    $('.dropdown-backdrop').remove()
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
-    })
+  function clearMenus(e) {
+
+    var open_parent = $(e.currentTarget).closest('.open');
+    console.log(open_parent);
+    if( open_parent.length == 0 ) {
+
+      $('.dropdown-backdrop').remove()
+      $(toggle).each(function () {
+        getParent($(this)).removeClass('open')
+      })
+
+    } else {
+      var immediate_parent = getParent($(e.currentTarget));
+      if( immediate_parent.hasClass('open') ) {
+        immediate_parent.removeClass('open');
+      }
+    }
   }
 
   function getParent($this) {
